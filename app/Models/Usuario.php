@@ -2,24 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Authenticatable
+class Usuario extends Model
 {
-    use HasFactory;
+    protected $fillable = ['name', 'email', 'password'];
 
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    public function setPasswordAttribute($value)
+    public function favoritos()
     {
-        $this->attributes['password'] = bcrypt($value);
+        return $this->hasMany(Favorito::class);
+    }
+
+    public function colunistas()
+    {
+        return $this->hasMany(Colunista::class);
     }
 }

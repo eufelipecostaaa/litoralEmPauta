@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ColunistaController;
+use App\Http\Controllers\FavoritoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +24,24 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+
+
+
+
+Route::resource('usuarios', UsuarioController::class);
+
+Route::resource('colunistas', ColunistaController::class);
+
+Route::resource('favoritos', FavoritoController::class);
+
+Route::get('usuarios/{id}/favoritos', [UsuarioController::class, 'favoritos']);
+
+
+Route::middleware(['auth'])->group(function () {
+   
+    Route::resource('usuarios', UsuarioController::class);
+    Route::resource('colunistas', ColunistaController::class);
+    Route::resource('favoritos', FavoritoController::class);
+});

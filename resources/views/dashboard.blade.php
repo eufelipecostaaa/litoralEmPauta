@@ -1,17 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<!-- resources/views/profile/index.blade.php -->
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
+<x-app-layout>
+    <!-- Adicione aqui o conteúdo da página de perfil -->
+    <div>
+        <h2 class="text-2xl font-semibold">Boas vindas, {{ Auth::user()->name }}</h2>
+        <p class="text-gray-600">{{ Auth::user()->email }}</p>
+        <p class="text-gray-600">{{ Auth::user()->name }}</p>
+        <!-- Adicione mais informações conforme necessário -->
     </div>
 </x-app-layout>

@@ -54,10 +54,15 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuario $usuario)
+    // UserController.php
+    public function show($id)
     {
-        return view('usuarios.show', compact('usuario'));
+        $usuario = Usuario::find($id);
+        $favoritos = $usuario->favoritos;
+
+        return view('usuarios.show', compact('usuario', 'favoritos'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
