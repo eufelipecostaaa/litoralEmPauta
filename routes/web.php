@@ -26,6 +26,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
+Route::get('/index', function () {
+    return view('index');
+});
+
 
 
 
